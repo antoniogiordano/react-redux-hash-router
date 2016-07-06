@@ -1,0 +1,29 @@
+{
+  "name": "react-hash-router",
+  "version": "0.0.1",
+  "description": "An hash router for React",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antoniogiordano/react-hash-router.git"
+  },
+  "keywords": [
+    "react",
+    "hash",
+    "router",
+    "webapp",
+    "routing"
+  ],
+  "author": "Antonio Giordano <antonio.giordano@getapper.com> (http://www.getapper.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antoniogiordano/react-hash-router/issues"
+  },
+  "homepage": "https://github.com/antoniogiordano/react-hash-router#readme",
+  "devDependencies": {
+    "standard": "^7.1.2"
+  }
+}
