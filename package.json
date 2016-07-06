@@ -2,8 +2,11 @@
   "name": "react-hash-router",
   "version": "0.0.1",
   "description": "An hash router for React",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
+    "prebuild": "rimraf lib",
+    "build": "babel src --out-dir lib",
+    "prepublish": "npm run build",
     "test": "standard"
   },
   "repository": {
@@ -24,6 +27,12 @@
   },
   "homepage": "https://github.com/antoniogiordano/react-hash-router#readme",
   "devDependencies": {
-    "standard": "^7.1.2"
+    "babel-cli": "^6.4.5",
+    "babel-plugin-transform-react-jsx": "^6.8.0",
+    "standard": "^7.1.2",
+    "rimraf": "^2.5.1"
+  },
+  "dependencies": {
+    "react": "^15.2.0"
   }
 }
