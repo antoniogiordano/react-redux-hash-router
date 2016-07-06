@@ -9,16 +9,20 @@ const HashRouter = React.createClass({
   _childKey: null,
   _params: [],
   propTypes: {
-    onLocationChanged: React.PropTypes.func
+    onLocationChanged: React.PropTypes.func,
+    className: React.PropTypes.any
   },
   getDefaultProps () {
     return {
-      onLocationChanged: (childKey, cb) => cb()
+      onLocationChanged: (childKey, params, cb) => cb(),
+      className: ''
     }
   },
   getInitialState () {
     return {
-      opacity: 0
+      style: {
+        opacity: 0
+      }
     }
   },
   componentDidMount () {
@@ -29,6 +33,14 @@ const HashRouter = React.createClass({
     var comp = this
     this.setState({
       opacity: 0
+    }, () => {
+      setTimeout(() => {
+        this.setState({
+          style: {
+            opacity: 1
+          }
+        })
+      }, 10)
     })
     var ret = this._matchedPage()
     if (ret !== null) {
@@ -36,16 +48,9 @@ const HashRouter = React.createClass({
         comp.forceUpdate()
       })
     }
-    setTimeout(() => {
-      this.setState({
-        opacity: 1
-      })
-    }, 10)
   },
   componentWillUpdate () {
     return false
-  },
-  componentDidUpdate () {
   },
   _matchedPage () {
     var hash = (typeof window.location !== 'undefined') ? window.location.hash : '#/'
@@ -118,10 +123,8 @@ const HashRouter = React.createClass({
   },
   render () {
     return (
-      <div className='size-100'>
-        <div className='size-100 fade-in' style={{opacity: this.state.opacity}}>
-          {this._matchedPage()}
-        </div>
+      <div className={this.props.className} style={this.state.style}>
+        {this._matchedPage()}
       </div>
     )
   }
