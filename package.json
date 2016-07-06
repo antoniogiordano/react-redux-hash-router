@@ -1,5 +1,5 @@
 {
-  "name": "react-hash-router",
+  "name": "react-hash-routing",
   "version": "0.0.1",
   "description": "An hash router for React",
   "main": "lib/index.js",
@@ -33,6 +33,7 @@
     "rimraf": "^2.5.1"
   },
   "dependencies": {
+    "jquery": "^3.0.0",
     "react": "^15.2.0"
   }
 }
