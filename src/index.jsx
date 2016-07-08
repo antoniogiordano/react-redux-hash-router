@@ -32,19 +32,21 @@ const HashRouter = React.createClass({
   _onHashChange () {
     var comp = this
     this.setState({
-      opacity: 0
-    }, () => {
-      setTimeout(() => {
-        this.setState({
-          style: {
-            opacity: 1
-          }
-        })
-      }, 10)
+      style: {
+        opacity: 0
+      }
     })
     var ret = this._matchedPage()
     if (ret !== null) {
       this.props.onLocationChanged(this._childKey, this._params, () => {
+        setTimeout(() => {
+          this.setState({
+            style: {
+              transition: 'opacity 500ms',
+              opacity: 1
+            }
+          })
+        }, 100)
         comp.forceUpdate()
       })
     }
