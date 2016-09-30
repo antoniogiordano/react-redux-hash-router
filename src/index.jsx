@@ -5,7 +5,7 @@
 const React = require('react')
 const $ = require('jquery')
 
-const HashRouter = React.createClass({
+const ReactHashRouter = React.createClass({
   _childKey: null,
   _params: [],
   propTypes: {
@@ -132,4 +132,4 @@ const HashRouter = React.createClass({
   }
 })
 
-module.exports = HashRouter
+module.exports = ReactHashRouter
