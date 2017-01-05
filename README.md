@@ -14,9 +14,9 @@ export default class Sample extends React.Component {
   render() {
     return (
       <HashRouter>
-      	<div key='home' hash='#/'>Home</div>
-      	<div key='contacts' hash='#/contacts'>Contacts</div>
-      	<YourCustomComponent key='customPage' hash='#/custom' />
+      	<div key='home' dataHash='#/'>Home</div>
+      	<div key='contacts' dataHash='#/contacts'>Contacts</div>
+      	<YourCustomComponent key='customPage' dataHash='#/custom' />
       </HashRouter>
     )
   }

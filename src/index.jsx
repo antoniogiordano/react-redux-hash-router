@@ -2,8 +2,8 @@
  * Created by AntonioGiordano on 06/07/16.
  */
 
-const React = require('react')
-const $ = require('jquery')
+import React from 'react'
+import $ from 'jquery'
 
 const ReactHashRouter = React.createClass({
   _childKey: null,
@@ -67,7 +67,7 @@ const ReactHashRouter = React.createClass({
     var childes = []
     var params = []
     React.Children.map(this.props.children, (child) => {
-      var childArray = child.props.hash.split('/')
+      var childArray = child.props.dataHash.split('/')
       if (childArray.length > 0) {
         childArray.shift()
       }
