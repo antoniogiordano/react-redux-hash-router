@@ -67,7 +67,7 @@ const ReactHashRouter = React.createClass({
     var childes = []
     var params = []
     React.Children.map(this.props.children, (child) => {
-      var childArray = child.props.dataHash.split('/')
+      var childArray = child.props['data-hash'].split('/')
       if (childArray.length > 0) {
         childArray.shift()
       }

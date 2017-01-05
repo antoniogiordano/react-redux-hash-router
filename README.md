@@ -11,12 +11,28 @@ import HashRouter from 'react-hash-routing';
 
 export default class Sample extends React.Component {
   ...
+  onLocationChanged (childKey, params, cb) {
+      switch (childKey) {
+        case 'home':
+          cb()
+          break
+        case 'contacts':
+          cb()
+          break
+        case 'customPage':
+          cb()
+          break
+        default:
+          cb()
+          break
+      }
+    },
   render() {
     return (
-      <HashRouter>
-      	<div key='home' dataHash='#/'>Home</div>
-      	<div key='contacts' dataHash='#/contacts'>Contacts</div>
-      	<YourCustomComponent key='customPage' dataHash='#/custom' />
+      <HashRouter onLocationChanged={this.onLocationChanged}>
+      	<div key='home' data-hash='#/'>Home</div>
+      	<div key='contacts' data-hash='#/contacts'>Contacts</div>
+      	<YourCustomComponent key='customPage' data-hash='#/custom' />
       </HashRouter>
     )
   }
@@ -25,3 +41,6 @@ export default class Sample extends React.Component {
 
 ### Build sources
 npm i
+
+### Develop mode
+npm run develop
