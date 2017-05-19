@@ -30,9 +30,9 @@ export default class Sample extends React.Component {
   render() {
     return (
       <HashRouter onLocationChanged={this.onLocationChanged}>
-      	<Route key='home' data-hash='#/'>Home</Route>
-      	<Route key='contacts' data-hash='#/contacts'>Contacts</Route>
-      	<Route key='contacts' data-hash='#/contacts'>
+      	<Route key='home' hash='#/'>Home</Route>
+      	<Route key='contacts' hash='#/contacts'>Contacts</Route>
+      	<Route key='contacts' hash='#/contacts'>
       	    <YourCustomComponent />
       	</Route>
       </HashRouter>
