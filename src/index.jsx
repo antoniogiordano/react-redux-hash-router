@@ -3,33 +3,34 @@
  */
 
 import React from 'react'
-import $ from 'jquery'
+import PropTypes from 'prop-types'
 
-const ReactHashRouter = React.createClass({
-  _childKey: null,
-  _params: [],
-  propTypes: {
-    onLocationChanged: React.PropTypes.func,
-    className: React.PropTypes.any
-  },
+class HashRouter extends React.Component {
+  constructor (props) {
+    super(props)
+
+    this._childKey = null
+    this._params = []
+    this.state = {
+      style: {
+        opacity: 0
+      }
+    }
+  }
+
   getDefaultProps () {
     return {
       onLocationChanged: (childKey, params, cb) => cb(),
       className: ''
     }
-  },
-  getInitialState () {
-    return {
-      style: {
-        opacity: 0
-      }
-    }
-  },
+  }
+
   componentDidMount () {
-    $(window).on('hashchange', this._onHashChange)
-    this._onHashChange()
-  },
-  _onHashChange () {
+    window.addEventListener("hashchange", this.onHashChange.bind(this), false)
+    this.onHashChange()
+  }
+
+  onHashChange () {
     var comp = this
     this.setState({
       style: {
@@ -50,10 +51,8 @@ const ReactHashRouter = React.createClass({
         comp.forceUpdate()
       })
     }
-  },
-  componentWillUpdate () {
-    return false
-  },
+  }
+
   _matchedPage () {
     var hash = (typeof window.location !== 'undefined') ? window.location.hash : '#/'
     var locArray = hash.split('/')
@@ -67,7 +66,7 @@ const ReactHashRouter = React.createClass({
     var childes = []
     var params = []
     React.Children.map(this.props.children, (child) => {
-      var childArray = child.props['data-hash'].split('/')
+      var childArray = child.props['hash'].split('/')
       if (childArray.length > 0) {
         childArray.shift()
       }
@@ -122,7 +121,12 @@ const ReactHashRouter = React.createClass({
     } else {
       return null
     }
-  },
+  }
+
+  componentWillUpdate () {
+    return false
+  }
+
   render () {
     return (
       <div className={this.props.className} style={this.state.style}>
@@ -130,6 +134,26 @@ const ReactHashRouter = React.createClass({
       </div>
     )
   }
-})
+}
 
-module.exports = ReactHashRouter
+HashRouter.propTypes = {
+  onLocationChanged: PropTypes.func,
+  className: PropTypes.any
+}
+
+export class Route extends React.Component {
+  constructor (props) {
+    super(props)
+  }
+
+  render () {
+    return this.props.children
+  }
+}
+
+Route.propTypes = {
+  key: PropTypes.string.isRequired,
+  hash: PropTypes.string.isRequired
+}
+
+export default HashRouter
