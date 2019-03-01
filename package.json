@@ -1,7 +1,7 @@
 {
-  "name": "react-hash-routing",
+  "name": "react-redux-hash-router",
   "version": "1.0.0",
-  "description": "An hash router for React",
+  "description": "An hash router for React and Redux Immutable",
   "main": "lib/index.js",
   "scripts": {
     "prebuild": "rimraf lib",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/antoniogiordano/react-hash-router.git"
+    "url": "git+https://github.com/antoniogiordano/react-redux-hash-router.git"
   },
   "keywords": [
     "react",
@@ -24,9 +24,12 @@
   "author": "Antonio Giordano <antonio.giordano@getapper.com> (http://www.getapper.com)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/antoniogiordano/react-hash-router/issues"
+    "url": "https://github.com/antoniogiordano/react-redux-hash-router/issues"
   },
-  "homepage": "https://github.com/antoniogiordano/react-hash-router#readme",
+  "homepage": "https://github.com/antoniogiordano/react-redux-hash-router#readme",
+  "dependencies":  {
+    "immutable": "^3.0.0"
+  },
   "devDependencies": {
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
@@ -35,10 +38,9 @@
     "grunt-contrib-watch": "^1.0.0",
     "material-ui": "^0.18.0",
     "parallelshell": "^2.0.0",
-    "react": "^15.5.4",
     "rimraf": "^2.5.1"
   },
-  "dependencies": {
-    "jquery": "^3.0.0"
+  "peerDependencies":  {
+    "react": "^16.2.0"
   }
 }
