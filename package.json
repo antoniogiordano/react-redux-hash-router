@@ -1,6 +1,6 @@
 {
   "name": "react-redux-hash-router",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An hash router for React and Redux Immutable",
   "main": "lib/index.js",
   "scripts": {
@@ -27,7 +27,7 @@
     "url": "https://github.com/antoniogiordano/react-redux-hash-router/issues"
   },
   "homepage": "https://github.com/antoniogiordano/react-redux-hash-router#readme",
-  "dependencies":  {
+  "dependencies": {
     "immutable": "^3.0.0"
   },
   "devDependencies": {
@@ -40,7 +40,7 @@
     "parallelshell": "^2.0.0",
     "rimraf": "^2.5.1"
   },
-  "peerDependencies":  {
+  "peerDependencies": {
     "react": "^16.2.0",
     "react-redux": "^5.0.7"
   }
