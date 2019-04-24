@@ -75,6 +75,9 @@ class HashRouterComponent extends PureComponent {
       typeof window.location !== 'undefined' ? window.location.hash : '#'
 
     let hashPath = hash.split('/')
+    if (hashPath[0] === '') {
+      hashPath[0] = '#'
+    }
     let routesPath = []
     let scores = []
     let routes = []
