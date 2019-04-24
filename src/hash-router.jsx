@@ -81,37 +81,30 @@ class HashRouterComponent extends PureComponent {
     let params = []
     React.Children.map(children, child => {
       let childArray = child.props['hash'].split('/')
+      if (childArray[childArray.length - 1] === '') {
+        childArray.pop()
+      }
       routesPath.push(childArray)
       scores.push(0)
       routes.push(child)
       params.push({})
     })
 
-    /*
     const regexParam = /^{(.*)}$/
     for (let j = 0; j < routesPath.length; j++) {
-      for (let i = 0; i < hashPath, i < routesPath[j].length; i++) {
-        if (hashPath[i] === routesPath[j][i]) {
-          scores[j] += 100
-        } else if (routesPath[j][i].match(regexParam, '$1') !== null) {
-          scores[j] += 1
-          params[j][routesPath[j][i].match(regexParam, '$1')[1]] = hashPath[i]
-        }
-      }
-    }
-    */
-
-    const regexParam = /^{(.*)}$/
-    for (let j = 0; j < routesPath.length; j++) {
-      for (let i = 0; i < hashPath.length && i < routesPath[j].length; i++) {
-        if (hashPath[i] === routesPath[j][i]) {
-          scores[j] += 100
-        } else if (routesPath[j][i].match(regexParam, '$1') !== null) {
-          scores[j] += 1
-          params[j][routesPath[j][i].match(regexParam, '$1')[1]] = hashPath[i]
-        } else {
-          scores[j] = 0
-          break
+      if (routesPath[j].length > hashPath.length) {
+        scores[j] = 0;
+      } else {
+        for (let i = 0; i < hashPath.length && i < routesPath[j].length; i++) {
+          if (hashPath[i] === routesPath[j][i]) {
+            scores[j] += 100
+          } else if (routesPath[j][i].match(regexParam, '$1') !== null) {
+            scores[j] += 1
+            params[j][routesPath[j][i].match(regexParam, '$1')[1]] = hashPath[i]
+          } else {
+            scores[j] = 0
+            break
+          }
         }
       }
     }
