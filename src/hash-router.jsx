@@ -95,16 +95,19 @@ class HashRouterComponent extends PureComponent {
 
     const regexParam = /^{(.*)}$/
     for (let j = 0; j < routesPath.length; j++) {
-      if (routesPath[j].length > hashPath.length) {
-        scores[j] = 0;
-      } else {
-        for (let i = 0; i < hashPath.length && i < routesPath[j].length; i++) {
+      for (let i = 0; i < hashPath.length || i < routesPath[j].length; i++) {
+        if (hashPath[i] && routesPath[j][i]) {
           if (hashPath[i] === routesPath[j][i]) {
             scores[j] += 100
-          } else if (routesPath[j][i].match(regexParam, '$1') !== null) {
+          } else if (routesPath[j][i].match(regexParam, '$1')) {
             scores[j] += 1
             params[j][routesPath[j][i].match(regexParam, '$1')[1]] = hashPath[i]
           } else {
+            scores[j] = 0
+            break
+          }
+        } else if (!hashPath[i] && routesPath[j][i]) {
+          if (!routesPath[j][i].match(regexParam, '$1')) {
             scores[j] = 0
             break
           }
